@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
-
+import './styles.css';
 
 const Results = () => {
     const {text} = useParams();
@@ -79,20 +79,27 @@ const Results = () => {
     return text!=undefined ? (
         
         <div className="Details">
-        <div>
-            Diseno de breadcrum1
-        </div>
-        <div>
+        <div className="backres">
         {
             total.map((item,index)=>(
                 
                     index < 4 ? (
-<div>
-<h5 key={item.id}></h5>
-                        <img src={item.thumbnail} />
-                <h5><Link to={"/items/"+item.id}>{item.title}</Link></h5>
-                <h5>{item.price}</h5>
-                <h5>{item.address.city_name}</h5>
+<div className="row">
+<div key={item.id}></div>
+<div className="column left">
+    <img className="imgresult" src={item.thumbnail} />
+</div>
+<div className="column middle">
+<p className="priceres">$ {item.price}</p>
+<p className="titleres"><Link to={"/items/"+item.id}>{item.title}</Link></p>
+</div>
+<div className="column right">
+<p className="cityres">{item.address.city_name}</p>
+</div>
+                        
+                
+                
+                
     </div>
                     
                     ):(
@@ -108,9 +115,9 @@ const Results = () => {
         </div>
         
     ):(
-        <div>
-        Espera respuesta
-    </div>
+        <>
+        
+    </>
     );
         
     
