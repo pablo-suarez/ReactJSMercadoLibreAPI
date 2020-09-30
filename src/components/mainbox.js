@@ -35,6 +35,9 @@ const MainBox = () => {
             
         });
     };
+    const bread =()=>{
+
+    }
 
 
     return(
@@ -49,8 +52,15 @@ const MainBox = () => {
         
 filAttr.values.filter(attr2=>attr2).map(filAttr2=>(
 
-    filAttr2.path_from_root.filter(attr3=>attr3).map(filAttr3=>(
-        <h5 key={filAttr3.id}>  {filAttr3.name}</h5>
+    filAttr2.path_from_root.filter(attr3=>attr3).map((filAttr3,index)=>(
+    <span key={filAttr3.id}>  {filAttr3.name}{
+        filAttr3.length-1!=index ?(
+            <span>></span>
+        ):(
+            <></>
+        )
+        
+        }</span>
     
         ))
     
