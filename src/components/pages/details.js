@@ -53,7 +53,7 @@ const Details = () => {
 
 
     
-    console.log(id);
+    console.log("Entro");
     return(
     <div>
         <h5>{features.title}</h5>

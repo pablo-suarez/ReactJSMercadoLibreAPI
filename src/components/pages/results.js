@@ -1,14 +1,44 @@
 import React,{useState,useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 
-
-const Results = ({ data : {total},}) => {
+const Results = () => {
+    const {text} = useParams();
+    const [total, setTotal] = useState([]);
     const [seg,setSeg] = useState(0);
-    if(total.length!=0){
-        console.log(total);
-    }else{
-        console.log("Sin Datos");
-    }
+    console.log("llego el :"+ text);
+    useEffect(()=>{
+        console.log(text+" Entro a useffect");
+        fetch("/sites/MLA/search?q="+text)
+        .then((res)=>res.json())
+        .then((data)=>{
+            data.author = (
+                {
+                    "name" : "Juan Pablo",
+                    "lastname" : "Suarez Soler"
+                }
+            );
+            
+            
+            //console.log(data.results);
+            setTotal(data.results);
+                console.log(data.results);
+
+            //console.log(total);
+            /*if(data.results.length!=0 && initial){
+                //console.log("Buscar algo");
+                setTotal(data.results);
+                setInitial(false);
+                //console.log(initial);
+                console.log(total);
+            }else{
+                //console.log("Buscar algo");
+
+            }*/
+            
+        });
+    },[]);
   /*  setTimeout(()=>{
         //console.log('Hola mundo');
         if(total){
@@ -45,30 +75,32 @@ const Results = ({ data : {total},}) => {
     const pruebita = (query) => {
         console.log(query);
     };*/
-
-    return total ? (
+//console.log(text);
+    return text!=undefined ? (
         
         <div className="Details">
         <div>
-            Diseno de breadcrum
+            Diseno de breadcrum1
         </div>
-        
-            {
+        {
             total.map((item)=>{
                 return(
                     <div key={item.id}>
                         <img src={item.thumbnail} />
-                <h5>{item.title}</h5>
+                <h5><Link to={"/items/"+item.id}>{item.title}</Link></h5>
                 <h5>{item.price}</h5>
                 <h5>{item.address.city_name}</h5>
                     </div>
                 );
             })
             }
+
         </div>
         
     ):(
-        <div>Realiza una busqueda</div>
+        <div>
+        Espera respuesta
+    </div>
     );
         
     
@@ -82,6 +114,21 @@ export default Results;
                     <div>
                         <img src={item.thumbnail} />
                 <h5>{item.title}</h5>
+                <h5>{item.price}</h5>
+                <h5>{item.address.city_name}</h5>
+                    </div>
+                );
+            })
+            }
+*/
+
+/*
+            {
+            total.map((item)=>{
+                return(
+                    <div key={item.id}>
+                        <img src={item.thumbnail} />
+                <h5><Link to={"/items/"+item.id}>{item.title}</Link></h5>
                 <h5>{item.price}</h5>
                 <h5>{item.address.city_name}</h5>
                     </div>

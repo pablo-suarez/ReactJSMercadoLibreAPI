@@ -10,12 +10,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 const Routing = () =>{
   return (
     <Switch>
-      <Route exact path="/items/?search=">
-        <MainBox />
-      </Route>
       <Route path="/items/:id">
         <Details/>
       </Route>
+      <Route exact path="/search/:text">
+        <Results />
+      </Route>
+
     </Switch>
   );
 };
