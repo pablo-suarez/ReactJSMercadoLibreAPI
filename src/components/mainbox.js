@@ -11,7 +11,8 @@ const MainBox = () => {
     const [total, setTotal] = useState([]);
     const [initial, setInitial] = useState(true);
     const [seg,setSeg] = useState(0);
-   /* useEffect(()=>{
+    const [categ,setCateg] = useState([]);
+   const printBread = ()=>{
         console.log(query);
         fetch("/sites/MLA/search?q="+query)
         .then((res)=>res.json())
@@ -24,24 +25,16 @@ const MainBox = () => {
             );
             
             
-            //console.log(data.results);
-            setTotal(data.results);
+            console.log(data.filters);
+
+            setCateg(data.filters);
 
 
             //console.log(total);
-            if(data.results.length!=0 && initial){
-                //console.log("Buscar algo");
-                setTotal(data.results);
-                setInitial(false);
-                //console.log(initial);
-                console.log(total);
-            }else{
-                //console.log("Buscar algo");
 
-            }
             
         });
-    },[]);*/
+    };
 
 
     return(
@@ -49,7 +42,21 @@ const MainBox = () => {
     <div className="mainbox">
         <img src={logo} alt="logo"/>
         <input type="text" className="inputbox" placeholder="Nunca dejes de buscar" value={query} onChange={(e) => {setQuery(e.target.value)}}/>
-        <Link to={"/search/"+query}><button type="submit"><img src={search} alt="Buscar"/></button></Link>
+        <Link to={"/search/"+query}><button type="submit" onClick={()=>{printBread(query)}}><img src={search} alt="Buscar"/></button></Link>
+    </div>
+    <div>
+    {categ.filter(attr => attr.id == "category").map(filAttr => (
+        
+filAttr.values.filter(attr2=>attr2).map(filAttr2=>(
+
+    filAttr2.path_from_root.filter(attr3=>attr3).map(filAttr3=>(
+        <h5 key={filAttr3.id}>  {filAttr3.name}</h5>
+    
+        ))
+    
+))
+
+))}
     </div>
     </> 
     );
