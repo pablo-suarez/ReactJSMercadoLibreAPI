@@ -1,0 +1,42 @@
+.mainbox{
+    background-color: #FFE600;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+}
+.inputbox{}
+.mainbox img{
+    margin-top: 8px;
+}
+.mainbox input[type=text] {
+    padding: 6px;
+    border: none;
+    margin-top: 0px;
+
+    margin-left: 16px;
+    font-size: 18px;
+    width: 600px;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+  .mainbox button {
+    float: right;
+    padding: 2px 8px 2px 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 16px;
+    background: #eee;
+
+    border: none;
+    cursor: pointer;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  ::placeholder {
+    color: #999;
+  }
+  *:focus {
+    outline: none;
+}
