@@ -82,19 +82,29 @@ const Results = () => {
         <div>
             Diseno de breadcrum1
         </div>
+        <div>
         {
-            total.map((item)=>{
-                return(
-                    <div key={item.id}>
+            total.map((item,index)=>(
+                
+                    index < 4 ? (
+<div>
+<h5 key={item.id}></h5>
                         <img src={item.thumbnail} />
                 <h5><Link to={"/items/"+item.id}>{item.title}</Link></h5>
                 <h5>{item.price}</h5>
                 <h5>{item.address.city_name}</h5>
-                    </div>
-                );
-            })
-            }
+    </div>
+                    
+                    ):(
+                    <>
+                    </>
+                    )
+                
 
+                
+            ))
+            }
+            </div>
         </div>
         
     ):(
@@ -135,4 +145,11 @@ export default Results;
                 );
             })
             }
+*/
+/*
+                        <h5 key={item.id}></h5>
+                        <img src={item.thumbnail} />
+                <h5><Link to={"/items/"+item.id}>{item.title}</Link></h5>
+                <h5>{item.price}</h5>
+                <h5>{item.address.city_name}</h5>
 */

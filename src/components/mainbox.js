@@ -47,7 +47,7 @@ const MainBox = () => {
         <input type="text" className="inputbox" placeholder="Nunca dejes de buscar" value={query} onChange={(e) => {setQuery(e.target.value)}}/>
         <Link to={"/search/"+query}><button type="submit" onClick={()=>{printBread(query)}}><img src={search} alt="Buscar"/></button></Link>
     </div>
-    <div>
+    <div className="bread">
     {categ.filter(attr => attr.id == "category").map(filAttr => (
         
 filAttr.values.filter(attr2=>attr2).map(filAttr2=>(

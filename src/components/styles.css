@@ -40,3 +40,10 @@
   *:focus {
     outline: none;
 }
+.bread{
+  background-color:#eee;
+  color: #666;
+  font-size: 14px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
