@@ -6,6 +6,7 @@ const Details = () => {
     const [description,setDescription] = useState([]);
     const [attrib,setAttrib] = useState([]);
     const {id} = useParams();
+    const [categ,setCateg] = useState([]);
 
     useEffect(()=>{
         fetch(`/items/${id}`)
@@ -17,16 +18,28 @@ const Details = () => {
                         "lastname" : "Suarez Soler"
                     }
                 );
-                //addTotal(data.results);
-                console.log(data.attributes);
+                
+               
                 setAttrib(data.attributes);
                 setFeatures(data);
-                console.log(features);
-                if(data.error){
-                    console.log("Hubo error");
-                }else{
-                    console.log("Busqueda con resultados");
-                }
+               
+
+
+                fetch('/categories/'+data.category_id)
+                .then((resp)=>resp.json())
+                .then((datac)=>{
+                    datac.author = (
+                        {
+                            "name" : "Juan Pablo",
+                            "lastname" : "Suarez Soler"
+                        }
+                    );
+
+                    setCateg(datac.path_from_root);
+                   
+                    
+                });
+
                 
             });
             fetch(`/items/${id}/description`)
@@ -38,34 +51,46 @@ const Details = () => {
                         "lastname" : "Suarez Soler"
                     }
                 );
-                //addTotal(data.results);
-                //console.log(datad);
+                
                 setDescription(datad);
-                console.log(description);
-                if(datad.error){
-                    console.log("Hubo otro error");
-                }else{
-                    console.log("Busqueda con resultados");
-                }
+
                 
             });
     },[]);
 
 
-    
-    console.log("Entro");
     return(
     <div>
+               <div className="bread">
+    {categ.filter(attr => attr).map((filAttr,index) => (
+        
 
+
+    
+    <span key={filAttr.id}>  {filAttr.name}{
+        categ.length-1 !== index ? (
+        <span>></span>
+        ):(
+            <></>
+        )
+
+        }</span>
+    
+        
+    
+
+
+))}
+    </div>
 
 <div className="row detail">
 <div key={features.id}>
 <div className="column leftdet">
-    <img className="imgdet" src={features.thumbnail} />
+    <img className="imgdet" src={features.thumbnail} alt={features.thumbnail}/>
 </div>
 <div className="column rightdet">
 
-{attrib.filter(attr => attr.id == "ITEM_CONDITION").map(filAttr => (<span className="att" key={filAttr.id}>  {filAttr.value_name}</span>))}
+{attrib.filter(attr => attr.id === "ITEM_CONDITION").map(filAttr => (<span className="att" key={filAttr.id}>  {filAttr.value_name}</span>))}
 <span className="att"> - {features.sold_quantity} vendidos</span>
 <p className="titdet">{features.title}</p>
 <p className="pricedet">$ {features.price}</p>
