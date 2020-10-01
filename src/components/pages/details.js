@@ -56,17 +56,34 @@ const Details = () => {
     console.log("Entro");
     return(
     <div>
-        <h5>{features.title}</h5>
-        <img src={features.thumbnail} />
-        <h5>{description.plain_text}</h5>
-        <h5>{features.sold_quantity}</h5>
-        <h5>{features.price}</h5>
 
-        {attrib.filter(attr => attr.id == "ITEM_CONDITION").map(filAttr => (
 
-        <h5 key={filAttr.id}>  {filAttr.value_name}</h5>
+<div className="row detail">
+<div key={features.id}>
+<div className="column leftdet">
+    <img className="imgdet" src={features.thumbnail} />
+</div>
+<div className="column rightdet">
 
-      ))}
+{attrib.filter(attr => attr.id == "ITEM_CONDITION").map(filAttr => (<span className="att" key={filAttr.id}>  {filAttr.value_name}</span>))}
+<span className="att"> - {features.sold_quantity} vendidos</span>
+<p className="titdet">{features.title}</p>
+<p className="pricedet">$ {features.price}</p>
+<button className="butbuy">Comprar</button>
+</div>      
+</div>       
+    </div>
+    <div className="description">
+    <p className="titledes">Descripción del producto</p>
+    <p className="desc">{description.plain_text}</p>
+    </div>
+
+
+        
+
+
+        
+
         
 
         </div>
@@ -74,3 +91,11 @@ const Details = () => {
 }
 
 export default Details;
+
+/*
+        <h5>{features.title}</h5>
+        <img src={features.thumbnail} />
+        <h5>{description.plain_text}</h5>
+        <h5>{features.sold_quantity}</h5>
+        <h5>{features.price}</h5>
+*/

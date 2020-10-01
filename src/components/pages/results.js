@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
+import ship from '../assets/ic_shipping.png';
 import './styles.css';
 
 const Results = () => {
@@ -22,9 +23,9 @@ const Results = () => {
             
             
             //console.log(data.results);
-            setTotal(data.results);
-                console.log(data.results);
-
+            
+             console.log(data.results);
+             setTotal(data.results);
             //console.log(total);
             /*if(data.results.length!=0 && initial){
                 //console.log("Buscar algo");
@@ -38,7 +39,7 @@ const Results = () => {
             }*/
             
         });
-    },[]);
+    },[text]);
   /*  setTimeout(()=>{
         //console.log('Hola mundo');
         if(total){
@@ -90,8 +91,8 @@ const Results = () => {
     <img className="imgresult" src={item.thumbnail} />
 </div>
 <div className="column middle">
-<p className="priceres">$ {item.price}</p>
-<p className="titleres"><Link to={"/items/"+item.id}>{item.title}</Link></p>
+<span className="priceres">$ {item.price} </span><span>{item.shipping.free_shipping ? <img src={ship} alt="ship"/> : <></>}</span>
+<p className="titleres"><Link className="linkres" to={"/items/"+item.id}>{item.title}</Link></p>
 </div>
 <div className="column right">
 <p className="cityres">{item.address.city_name}</p>

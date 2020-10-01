@@ -20,7 +20,7 @@ const MainBox = () => {
     const [queryRef,setQueryRef] = useState("");
 
     useEffect(()=>{
-        setQueryRef(location.pathname.replace("/search/", ""));
+        //setQueryRef(location.pathname.replace("/search/", ""));
         fetch("/sites/MLA/search?q="+location.pathname.replace("/search/", ""))
         .then((res)=>res.json())
         .then((data)=>{
@@ -34,7 +34,7 @@ const MainBox = () => {
             //console.log("arreglado "+location.pathname.replace("/search/", ""));
                 //console.log("Esta es:  "+location.pathname);
             console.log(data.filters);
-console.log("qUERYrEF:" +queryRef)
+//console.log("qUERYrEF:" +queryRef)
             setCateg(data.filters);
           
             //printBread(queryRef);

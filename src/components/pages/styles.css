@@ -1,6 +1,7 @@
 .imgresult{
     width: 180px;
     height: 180px;
+    border-radius: 4px;
 }
 .column {
     float: left;
@@ -8,15 +9,17 @@
     .left {
     width: 20%;
     padding: 16px;
+    margin: 10px;
     }
 
     .middle {
     width: 40%;
     text-align: left;
+    padding: 30px;
     }
     
     .right {
-    width: 30%;
+    width: 20%;
     margin-top: 5%;
     }
 
@@ -29,6 +32,7 @@
 .priceres{
     font-size: 24px;
     color: #333;
+    margin-top: 100px;
     margin-bottom: 32px;
 }
 .titleres{
@@ -43,4 +47,76 @@
     background-color: #fff;
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 5%;
+}
+.linkres{
+    color:#333;
+     text-decoration: none
+  }
+
+.imgdet{
+    width: 680px;
+    height: 580px;
+    border-radius: 4px;
+
+}
+
+    .leftdet {
+    width: 50%;
+    padding: 16px;
+    margin: 10px;
+    }
+    
+    .rightdet {
+    width: 30%;
+    margin-top: 32px;
+    text-align: start;
+    }
+.detail{
+    color: #333;
+    
+}
+.att{
+    font-size: 14px;
+    text-align: initial;
+}
+.titdet{
+    font-size: 24px;
+    text-align: initial;
+    font-weight: bold;
+}
+.pricedet{
+    font-size: 46px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+.description{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+    text-align: start;
+}
+.titledes{
+    font-size: 28px;
+    color: #333;
+}
+.desc{
+    font-size: 16px;
+    color: #999;
+}
+.butbuy {
+    background-color: #3483FA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+.imgship{
+
 }
