@@ -13,7 +13,7 @@ const Routing = () =>{
       <Route path="/items/:id">
         <Details/>
       </Route>
-      <Route exact path="/search/:text">
+      <Route path="/search/:text">
         <Results />
       </Route>
 

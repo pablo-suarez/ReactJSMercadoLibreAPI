@@ -4,6 +4,8 @@ import search from './assets/ic_Search.png';
 import './styles.css';
 import Results from './pages/results';
 import {Link} from 'react-router-dom';
+import {useParams,useHistory,useLocation} from 'react-router-dom';
+
 
 
 const MainBox = () => {
@@ -13,9 +15,34 @@ const MainBox = () => {
     const [initial, setInitial] = useState(true);
     const [seg,setSeg] = useState(0);
     const [categ,setCateg] = useState([]);
+    //const {text} = useParams();
+    const location = useLocation();
+    const [queryRef,setQueryRef] = useState("");
 
+    useEffect(()=>{
+        setQueryRef(location.pathname.replace("/search/", ""));
+        fetch("/sites/MLA/search?q="+location.pathname.replace("/search/", ""))
+        .then((res)=>res.json())
+        .then((data)=>{
+            data.author = (
+                {
+                    "name" : "Juan Pablo",
+                    "lastname" : "Suarez Soler"
+                }
+            );
+            //console.log(text+" Entraito a useffect");
+            //console.log("arreglado "+location.pathname.replace("/search/", ""));
+                //console.log("Esta es:  "+location.pathname);
+            console.log(data.filters);
+console.log("qUERYrEF:" +queryRef)
+            setCateg(data.filters);
+          
+            //printBread(queryRef);
 
-    
+            
+        });
+    },[]);
+
    const printBread = ()=>{
         console.log(query);
         fetch("/sites/MLA/search?q="+query)
